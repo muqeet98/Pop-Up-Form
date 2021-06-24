@@ -3,28 +3,43 @@ import Foothagelength from '../../../components/Footagelength/index';
 import Budget from '../../../components/Budget/index';
 import AnimationMethod from '../../../components/AnimationMethod/index';
 import { Link } from 'react-router-dom';
+import Star from '../../../components/Star';
+import PopUp2 from '../../HomePage/PopUp2';
 const Index = () => {
 	const [ about, setAbout ] = useState('');
 	const [ preflength, setPreflength ] = useState('');
 	const [ lengthProvided, setLengthProvided ] = useState('');
+	const [ lengthOther, setLengthOther ] = useState('');
 	const [ budget, setBudget ] = useState('');
+	const [ budget_other, setBudgetOther ] = useState('');
 	const [ method, setMethod ] = useState('');
-
-	const GetMethod = (method) => {
-		setMethod(method);
+	const [ method_other, setMethodOther ] = useState('');
+	const [ isOpen, setIsOpen ] = useState(false);
+	
+	const togglePopup = () => {
+		setIsOpen(!isOpen);
 	};
-	const GetFootageLen = (lengthProvided) => {
-		setLengthProvided(lengthProvided);
-	};
-	const GetBudget = (budget) => {
+	const GetBudget = (budget, budget_other) => {
 		setBudget(budget);
+		setBudgetOther(budget_other);
 	};
+
+	const GetMethod = (method, method_other) => {
+		setMethod(method);
+		setMethodOther(method_other);
+	};
+	const GetFootageLen = (lengthProvided, lengthOther) => {
+		setLengthProvided(lengthProvided);
+		setLengthOther(lengthOther);
+	};
+
 	return (
 		<div className="container">
 			<div>
 				<div className="margin5">
-					<div className="">
-						<h5>Tell us about your Project</h5>
+					<div className="row container">
+						<label className="headerfont">Tell us about your Project.</label>
+						<Star />
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -41,8 +56,9 @@ const Index = () => {
 					<div className="margin" />
 				</div>
 				<div className="margin5">
-					<div className="">
-						<h5>Please specify the length of the video you prefer.</h5>
+					<div className="container row">
+						<label className="headerfont">Please specify the length of the video you prefer.</label>
+						<Star />
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -59,19 +75,20 @@ const Index = () => {
 					<div className="margin" />
 				</div>
 				<div className="margin5">
-					<div className="">
-						<h5>Animation Method</h5>
+					<div className="container row">
+						<label className="headerfont">Animation Method?</label>
+						<Star />
 					</div>
 					<div className="margin" />
 					<div className="">
 						<AnimationMethod parentCallback={GetMethod} />
-						<label>{method}</label>
 					</div>
 					<div className="margin" />
 				</div>
 				<div className="margin5">
-					<div className="">
-						<h5>What is the lenght of the footage you will be providing?</h5>
+					<div className="container row">
+						<label className="headerfont">What is the lenght of the footage you will be providing?</label>
+						<Star />
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -79,23 +96,23 @@ const Index = () => {
 					</div>
 					<div className="margin" />
 				</div>
-
 				<div className="margin5">
-					<div className="">
-						<h5>What is your budget?</h5>
+					<div className="container row">
+						<label className="headerfont">What is your budget?</label>
+						<Star />
 					</div>
 					<div className="margin" />
 					<div className="">
 						<Budget parentCallback={GetBudget} />
-						<label>{budget}</label>
 					</div>
 					<div className="margin" />
 				</div>
 				{about != '' && preflength != '' && lengthProvided != '' && budget != '' && method != '' ? (
 					<div className="margin5" style={{ textAlign: 'center', padding: 15 }}>
-						<Link to="/step2">
-							<button className="travel-button about-view">Next</button>
-						</Link>
+						<button className="travel-button about-view" onClick={togglePopup}>
+							Next
+						</button>
+						{isOpen && <PopUp2 handleClose={togglePopup} />}
 					</div>
 				) : (
 					<div className="margin5" style={{ textAlign: 'center', padding: 15 }}>

@@ -4,16 +4,25 @@ class index extends Component {
 		super();
 		this.state = {
 			name: '',
-			selectedOption: ""
+			selectedOption: "",
+			method_other:""
 		};
 		this.onValueChange = this.onValueChange.bind(this);
+		this.onMethodChange = this.onMethodChange.bind(this);
 		this.formSubmit = this.formSubmit.bind(this);
-		props.parentCallback(this.state.selectedOption);
+		props.parentCallback(this.state.selectedOption, this.state.method_other);
 	}
 	onValueChange(event) {
-		this.props.parentCallback(this.state.selectedOption);
+		this.props.parentCallback(this.state.selectedOption, this.state.method_other);
 		this.setState({
 			selectedOption: event.target.value
+		});
+	}
+	onMethodChange(event) {
+		this.setState({selectedOption: 'other'})
+		this.props.parentCallback(this.state.selectedOption, this.state.method_other);
+		this.setState({
+			method_other: event.target.value
 		});
 	}
 	formSubmit(event) {
@@ -32,7 +41,7 @@ class index extends Component {
 							onChange={this.onValueChange}
 							onClick={this.props.parentCallback(this.state.selectedOption)}
 						/>
-						Digital
+						{"	"}Digital
 					</label>
 				</div>
 
@@ -44,7 +53,7 @@ class index extends Component {
 							checked={this.state.selectedOption === 'stopmotion'}
 							onChange={this.onValueChange}
 						/>
-						Stop-Motion
+						{"	"}Stop-Motion
 					</label>
 				</div>
 				<div className="radio col-log-6">
@@ -55,7 +64,7 @@ class index extends Component {
 							checked={this.state.selectedOption === 'lyrical'}
 							onChange={this.onValueChange}
 						/>
-						Lyrical video
+						{"	"}Lyrical video
 					</label>
 				</div>
 				<div className="radio col-log-6">
@@ -66,7 +75,7 @@ class index extends Component {
 							checked={this.state.selectedOption === 'whiteboard'}
 							onChange={this.onValueChange}
 						/>
-						Whiteboard animation
+						{"	"}Whiteboard animation
 					</label>
 				</div>
 				<div className=" row radio col-lg-6">
@@ -77,14 +86,15 @@ class index extends Component {
 							checked={this.state.selectedOption === 'other'}
 							onChange={this.onValueChange}
 						/>
-						other
+					{"	"}	Other
 					</label>
 					<div className="paddingleft10">
 						<input
 							type="text"
-							value=""
+							value={this.state.method_other}
 							// checked={this.state.selectedOption === 'Podcast'}
-							onChange={this.onValueChange}
+							onChange={this.onMethodChange}
+							onClick={this.props.parentCallback(this.state.selectedOption, this.state.method_other)}
 						/>
 					</div>
 				</div>

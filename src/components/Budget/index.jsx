@@ -4,13 +4,20 @@ class index extends Component {
 		super();
 		this.state = {
 			name: '',
-			selectedOption: ""
+			selectedOption: "",
+			budget_other: "",
 		};
+		this.onBudgetChange = this.onBudgetChange.bind(this);
 		this.onValueChange = this.onValueChange.bind(this);
 		this.formSubmit = this.formSubmit.bind(this);
-		props.parentCallback(this.state.selectedOption);
+		props.parentCallback(this.state.selectedOption, this.state.budget_other);
 	}
-
+	onBudgetChange(event) {
+		this.setState({selectedOption: 'other'});
+		this.setState({
+			budget_other: event.target.value
+		})
+	}
 	onValueChange(event) {
 		this.props.parentCallback(this.state.selectedOption);
 		this.setState({
@@ -33,7 +40,7 @@ class index extends Component {
 										onChange={this.onValueChange}
 										onClick={this.props.parentCallback(this.state.selectedOption)}
 									/>
-								    Under 50
+								  {"	"}  Below $ 50
 								</label>
 							</div>
 
@@ -45,7 +52,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'upto100'}
 										onChange={this.onValueChange}
 									/>
-								    $ 50 - $ 100
+								 {"	"}   $ 50 - $ 100
 								</label>
 							</div>
 							<div className="radio col-log-6">
@@ -56,7 +63,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'upto500'}
 										onChange={this.onValueChange}
 									/>
-									$100 -$ 500
+								{"	"}	$100 -$ 500
 								</label>
 							</div>
 							<div className="radio col-log-6">
@@ -67,7 +74,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'upto1000'}
 										onChange={this.onValueChange}
 									/>
-									$ 500 - $ 1000
+								{"	"}	$ 500 - $ 1000
 								</label>
 							</div>
 							<div className=" row radio col-lg-6">
@@ -78,22 +85,18 @@ class index extends Component {
 										checked={this.state.selectedOption === 'other'}
 										onChange={this.onValueChange}
 									/>
-									other
+								{"	"}	Other
 								</label>
                                 <div className="paddingleft10">
                                 <input
-										type="text"
-										value=""
-										checked={this.state.selectedOption === 'Podcast'}
-										onChange={this.onValueChange}
+								 	    type="text"
+										value={this.state.budget_other}
+										onChange={this.onBudgetChange}
+										onClick={this.props.parentCallback(this.state.selectedOption, this.state.budget_other)}
 									/>
                                     </div>
 							</div>
-
-
 						</form>
-
-
 		);
 	}
 }

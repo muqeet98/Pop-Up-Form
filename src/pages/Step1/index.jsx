@@ -1,16 +1,19 @@
+// const width = window.width;
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Wedding from './Wedding/index';
 import Animation from './Animation/index';
 import Voiceover from './Voiceover/index';
+import Star from '../../components/Star';
 class index extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			name: '',
 			selectedOption: '',
 			length: '',
-			other_input:''
+			other_input: '',
+			width: 0
 		};
 		this.onValueChange = this.onValueChange.bind(this);
 		this.formSubmit = this.formSubmit.bind(this);
@@ -22,40 +25,47 @@ class index extends Component {
 			other_input: event.target.value
 		});
 	}
+
 	onValueChange(event) {
 		this.setState({
 			selectedOption: event.target.value
 		});
+
+		if (this.state.selectedOption == '') {
+			this.setState({ width: this.state.width + 5 });
+		}
 	}
+
 	formSubmit(event) {
 		event.preventDefault();
 		console.log(this.state.selectedOption);
 	}
+
 	render() {
 		return (
-			<div className="container">
+			<div style={{ position: 'relative' }} className="container">
 				<div className="container finalcontainer">
-					<div className="">
+					<div className="container">
 						<h2>Request an Estimate</h2>
 						<div className="margin" />
-						<div style={{ textAlign: 'center' }}>
-							<label>Page 1/3</label>
+						<div style={{ textAlign: 'end' }}>
+							<label>Step 1/3</label>
 						</div>
 					</div>
 					<div className="col-lg-12">
 						<div className="progress">
-							<div
-								className="progress-bar"
-								style={{ width: '5%', backgroundColor: '#ebf4fd', color: 'black' }}
-							>
-								0%
+							<div className="progress-bar1" style={{ width: `${this.state.width}%` }}>
+								{this.state.width}
 							</div>
 						</div>
 					</div>
 
 					<div className="margin5" />
-					<div className="">
-						<h5>What type of video are you producing? *</h5>
+					<div className="container">
+						<div className="row container">
+							<label className="headerfont">What type of video are you producing?</label>
+							<Star />
+						</div>
 					</div>
 					<div className="margin" />
 					<div className="container">
@@ -68,7 +78,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Wedding'}
 										onChange={this.onValueChange}
 									/>
-									Wedding
+									{'	'}Wedding
 								</label>
 							</div>
 
@@ -80,7 +90,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Holiday'}
 										onChange={this.onValueChange}
 									/>
-									Holiday
+									{'	'}Holiday
 								</label>
 							</div>
 							<div className="radio col-lg-4">
@@ -91,7 +101,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Corporate'}
 										onChange={this.onValueChange}
 									/>
-									Corporate
+									{'	'} Corporate
 								</label>
 							</div>
 						</form>
@@ -105,7 +115,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Gopro'}
 										onChange={this.onValueChange}
 									/>
-									Go Pro
+									{'	'} GoPro
 								</label>
 							</div>
 
@@ -117,7 +127,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Family'}
 										onChange={this.onValueChange}
 									/>
-									Family
+									{'	'}Family
 								</label>
 							</div>
 							<div className="radio col-lg-4">
@@ -128,7 +138,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Drone'}
 										onChange={this.onValueChange}
 									/>
-									Drone
+									{'	'}Drone
 								</label>
 							</div>
 						</form>
@@ -142,7 +152,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Commercial'}
 										onChange={this.onValueChange}
 									/>
-									Commercial
+									{'	'}Commercial
 								</label>
 							</div>
 
@@ -154,7 +164,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Animation'}
 										onChange={this.onValueChange}
 									/>
-									Animation
+									{'	'}Animation
 								</label>
 							</div>
 							<div className="radio col-lg-4">
@@ -165,7 +175,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Podcast'}
 										onChange={this.onValueChange}
 									/>
-									Podcast
+									{'	'}Podcast
 								</label>
 							</div>
 						</form>
@@ -178,7 +188,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Voiceover'}
 										onChange={this.onValueChange}
 									/>
-									Voice over
+									{'	'}Voice over
 								</label>
 							</div>
 
@@ -190,7 +200,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'Customjob'}
 										onChange={this.onValueChange}
 									/>
-									Custom Job
+									{'	'}Custom Job
 								</label>
 							</div>
 							<div className="radio col-lg-4">
@@ -201,17 +211,18 @@ class index extends Component {
 										checked={this.state.selectedOption === 'other'}
 										onChange={this.onValueChange}
 									/>
-									<input
+									{'	'}Other
+									{/* <input
 										type="text"
 										placeholder="other"
 										value={this.state.other_input}
 										// checked={this.state.selectedOption === 'Podcast'}
 										onChange={this.onTextChange}
-									/>
+									/> */}
 								</label>
 							</div>
 						</form>
-						{this.state.selectedOption == 'Wedding' ? <Wedding /> : null}
+						{this.state.selectedOption == 'Wedding' ? <Wedding width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
 						{this.state.selectedOption == 'Holiday' ? <Wedding /> : null}
 						{this.state.selectedOption == 'Corporate' ? <Wedding /> : null}
 

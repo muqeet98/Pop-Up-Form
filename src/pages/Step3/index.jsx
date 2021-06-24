@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class index extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			name: 'Flexible',
 			fname: '',
@@ -13,7 +13,9 @@ class index extends Component {
 			company: '',
 			call_date: '',
 			time: '',
-			selectedOption: 'No'
+			selectedOption: 'No',
+			width: 53
+
 		};
 		this.onFname = this.onFname.bind(this);
 		this.onLname = this.onLname.bind(this);
@@ -27,18 +29,33 @@ class index extends Component {
 	}
 	onFname(event) {
 		this.setState({ fname: event.target.value });
+		if(this.state.fname==''){
+			this.setState({width: this.state.width+10})
+		}
 	}
 	onLname(event) {
 		this.setState({ lname: event.target.value });
+		if(this.state.lname==''){
+			this.setState({width: this.state.width+10})
+		}
 	}
 	onPhone(event) {
 		this.setState({ phone: event.target.value });
+		if(this.state.phone==''){
+			this.setState({width: this.state.width+10})
+		}
 	}
 	onEmail(event) {
 		this.setState({ email: event.target.value });
+		if(this.state.email==''){
+			this.setState({width: this.state.width+10})
+		}
 	}
 	onCompany(event) {
 		this.setState({ company: event.target.value });
+		if(this.state.company==''){
+			this.setState({width: this.state.width+7})
+		}
 	}
 	onDate(event) {
 		this.setState({ call_date: event.target.value });
@@ -56,38 +73,37 @@ class index extends Component {
 		event.preventDefault();
 		console.log(this.state.selectedOption);
 	}
+
 	render() {
 		return (
-			<div className="container">
+			<div  className="container">
 				<div className="finalcontainer container">
-					<div className="">
+					<div style={{ textAlign: 'left' }}className="container">
 						<h2>Request an Estimate</h2>
 						<div className="margin" />
-						<div style={{ textAlign: 'center' }}>
-							<label>Page 3/3</label>
+						<div style={{ textAlign: 'end' }}>
+							<label>Step 3/3</label>
 						</div>
 					</div>
 					<div className="col-lg-12 col-md-8 col-sm-4">
 						<div className="progress">
-							<div className="progress-bar" style={{ width: '66%' }}>
-								66%
+							<div className="progress-bar" style={{ width: `${this.state.width}%` }}>
+								{this.state.width}
 							</div>
 						</div>
 					</div>
 					<div className="margin5" />
-					<div className="">
-						<h5>How can we contact You?</h5>
+					<div className="container">
+					<div className="row container">
+						<label className="headerfont">How can we contact You?</label>
+					</div>
 					</div>
 					<div className="margin" />
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-6 col-md-4 col-sm-12">
-								<div className="single-tab-select-box">
-									<h2>Name</h2>
-								</div>
-							</div>
+					<div style={{position:'relative'}} className="container">
+						<div className="row container alignLeft">
+						<label className="headerfont">Name</label>
 						</div>
-						<div className="row">
+						<div className="row alignLeft">
 							<div className="col-lg-6 col-md-3 col-sm-4">
 								<div>
 									<input
@@ -116,10 +132,10 @@ class index extends Component {
 							</div>
 						</div>
 						<div className="margin" />
-						<div className="row">
+						<div className="row alignLeft">
 							<div className="col-lg-12 col-md-3 col-sm-4">
 								<div>
-									<h5>Phone</h5>
+									<label className="headerfont">Phone</label>
 									<div className="margin" />
 									<input
 										type="text"
@@ -133,10 +149,10 @@ class index extends Component {
 							</div>
 						</div>
 						<div className="margin" />
-						<div className="row">
+						<div className="row alignLeft">
 							<div className="col-lg-12 col-md-3 col-sm-4">
 								<div>
-									<h5>Email</h5>
+									<label className="headerfont">Email</label>
 									<div className="margin" />
 									<input
 										type="text"
@@ -150,10 +166,10 @@ class index extends Component {
 							</div>
 						</div>
 						<div className="margin" />
-						<div className="row">
+						<div className="row alignLeft">
 							<div className="col-lg-12 col-md-3 col-sm-4">
 								<div>
-									<h5>Company</h5>
+									<label className="headerfont">Company</label>
 									<div className="margin" />
 									<input
 										type="text"
@@ -166,13 +182,13 @@ class index extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="row">
+						<div className="row alignLeft">
 							<div className="col-lg-10 col-md-3 col-sm-4">
 								<div>
-									<h5>Would you Like to schedule a call?</h5>
+									<label className="headerfont">Would you Like to schedule a call?</label>
 									<div className="margin" />
 									<form className="row " onSubmit={this.formSubmit}>
-										<div className="radio col-lg-1">
+										<div className="radio col-lg-2">
 											<label>
 												<input
 													type="radio"
@@ -180,11 +196,11 @@ class index extends Component {
 													checked={this.state.selectedOption === 'Yes'}
 													onChange={this.onValueChange}
 												/>
-												Yes
+												{" "}Yes
 											</label>
 										</div>
 
-										<div className="radio col-lg-1">
+										<div className="radio col-lg-2">
 											<label>
 												<input
 													type="radio"
@@ -192,7 +208,7 @@ class index extends Component {
 													checked={this.state.selectedOption === 'No'}
 													onChange={this.onValueChange}
 												/>
-												No
+												{" "}No
 											</label>
 										</div>
 									</form>
@@ -204,10 +220,10 @@ class index extends Component {
 						{this.state.selectedOption == 'Yes' ? (
 							<div>
 								<div className="margin" />
-								<div className="row">
+								<div className="row alignLeft">
 									<div className="col-lg-12 col-md-3 col-sm-4">
 										<div>
-											<h5>Select a Date you would like us to call you?</h5>
+											<label className="headerfont">Select a Date you would like us to call you?</label>
 											<div className="margin" />
 											<input
 												type="date"
@@ -221,10 +237,10 @@ class index extends Component {
 									</div>
 								</div>
 								<div className="margin" />
-								<div className="row">
+								<div className="row alignLeft">
 									<div className="col-lg-12 col-md-3 col-sm-4">
 										<div>
-											<h5>Enter a time when we can reach you?</h5>
+											<label className="headerfont">Enter a time when we can reach you?</label>
 											<div className="margin" />
 											<input
 												type="time"
@@ -243,18 +259,15 @@ class index extends Component {
 						<div className="col-lg-12">
 							<div class="row space-between" style={{ padding: 15 }}>
 								<div class="about-btn travel-mrt-0">
-									<Link to="/step2">
-										<button class="about-view travel-btn">Previous</button>
-									</Link>
+										<button class="about-view travel-btn" onClick={this.props.handle}>Previous</button>
 								</div>
 								<div class="about-btn travel-mrt-0">
 									{this.state.fname != '' &&
 									this.state.lname != '' &&
 									this.state.phone != '' &&
 									this.state.email != '' ? (
-										<Link to="">
 											<button class="about-view travel-btn">Submit</button>
-										</Link>
+
 									) : (
 										<button
 											class="about-view travel-btn"
