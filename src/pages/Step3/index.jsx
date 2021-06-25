@@ -1,3 +1,4 @@
+import Star from '../../components/Star/index';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,8 +15,7 @@ class index extends Component {
 			call_date: '',
 			time: '',
 			selectedOption: 'No',
-			width: 53
-
+			width: 60
 		};
 		this.onFname = this.onFname.bind(this);
 		this.onLname = this.onLname.bind(this);
@@ -29,33 +29,30 @@ class index extends Component {
 	}
 	onFname(event) {
 		this.setState({ fname: event.target.value });
-		if(this.state.fname==''){
-			this.setState({width: this.state.width+10})
+		if (this.state.fname == '') {
+			this.setState({ width: this.state.width + 10 });
 		}
 	}
 	onLname(event) {
 		this.setState({ lname: event.target.value });
-		if(this.state.lname==''){
-			this.setState({width: this.state.width+10})
+		if (this.state.lname == '') {
+			this.setState({ width: this.state.width + 10 });
 		}
 	}
 	onPhone(event) {
 		this.setState({ phone: event.target.value });
-		if(this.state.phone==''){
-			this.setState({width: this.state.width+10})
+		if (this.state.phone == '') {
+			this.setState({ width: this.state.width + 10 });
 		}
 	}
 	onEmail(event) {
 		this.setState({ email: event.target.value });
-		if(this.state.email==''){
-			this.setState({width: this.state.width+10})
+		if (this.state.email == '') {
+			this.setState({ width: this.state.width + 10 });
 		}
 	}
 	onCompany(event) {
 		this.setState({ company: event.target.value });
-		if(this.state.company==''){
-			this.setState({width: this.state.width+7})
-		}
 	}
 	onDate(event) {
 		this.setState({ call_date: event.target.value });
@@ -76,9 +73,9 @@ class index extends Component {
 
 	render() {
 		return (
-			<div  className="container">
+			<div className="container">
 				<div className="finalcontainer container">
-					<div style={{ textAlign: 'left' }}className="container">
+					<div style={{ textAlign: 'left' }} className="container">
 						<h2>Request an Estimate</h2>
 						<div className="margin" />
 						<div style={{ textAlign: 'end' }}>
@@ -94,14 +91,15 @@ class index extends Component {
 					</div>
 					<div className="margin5" />
 					<div className="container">
-					<div className="row container">
-						<label className="headerfont">How can we contact You?</label>
-					</div>
+						<div className="row container">
+							<label className="headerfont">How can we contact You?</label>
+						</div>
 					</div>
 					<div className="margin" />
-					<div style={{position:'relative'}} className="container">
+					<div style={{ position: 'relative' }} className="container">
 						<div className="row container alignLeft">
-						<label className="headerfont">Name</label>
+							<label className="headerfont">Name</label>
+							<Star/>
 						</div>
 						<div className="row alignLeft">
 							<div className="col-lg-6 col-md-3 col-sm-4">
@@ -109,12 +107,13 @@ class index extends Component {
 									<input
 										type="text"
 										name="country"
+										placeholder="Last"
 										className="form-control"
 										value={this.state.fname}
 										onChange={this.onFname}
 									/>
 									<div className="margin" />
-									<label>First</label>
+									{/* <label>First</label> */}
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-3 col-sm-4 ">
@@ -122,12 +121,13 @@ class index extends Component {
 									<input
 										type="text"
 										name="check_in"
+										placeholder="Last"
 										className="form-control"
 										value={this.state.lname}
 										onChange={this.onLname}
 									/>
 									<div className="margin" />
-									<label>Last</label>
+									{/* <label>Last</label> */}
 								</div>
 							</div>
 						</div>
@@ -135,7 +135,10 @@ class index extends Component {
 						<div className="row alignLeft">
 							<div className="col-lg-12 col-md-3 col-sm-4">
 								<div>
+								  <div className="row container">
 									<label className="headerfont">Phone</label>
+									<Star/>
+									</div>
 									<div className="margin" />
 									<input
 										type="text"
@@ -152,7 +155,10 @@ class index extends Component {
 						<div className="row alignLeft">
 							<div className="col-lg-12 col-md-3 col-sm-4">
 								<div>
+								<div className="row container">
 									<label className="headerfont">Email</label>
+									<Star/>
+									</div>
 									<div className="margin" />
 									<input
 										type="text"
@@ -195,8 +201,8 @@ class index extends Component {
 													value="Yes"
 													checked={this.state.selectedOption === 'Yes'}
 													onChange={this.onValueChange}
-												/>
-												{" "}Yes
+												/>{' '}
+												Yes
 											</label>
 										</div>
 
@@ -207,8 +213,8 @@ class index extends Component {
 													value="No"
 													checked={this.state.selectedOption === 'No'}
 													onChange={this.onValueChange}
-												/>
-												{" "}No
+												/>{' '}
+												No
 											</label>
 										</div>
 									</form>
@@ -223,7 +229,9 @@ class index extends Component {
 								<div className="row alignLeft">
 									<div className="col-lg-12 col-md-3 col-sm-4">
 										<div>
-											<label className="headerfont">Select a Date you would like us to call you?</label>
+											<label className="headerfont">
+												Select a Date you would like us to call you?
+											</label>
 											<div className="margin" />
 											<input
 												type="date"
@@ -259,15 +267,16 @@ class index extends Component {
 						<div className="col-lg-12">
 							<div class="row space-between" style={{ padding: 15 }}>
 								<div class="about-btn travel-mrt-0">
-										<button class="about-view travel-btn" onClick={this.props.handle}>Previous</button>
+									<button class="about-view travel-btn" onClick={this.props.handle}>
+										Previous
+									</button>
 								</div>
 								<div class="about-btn travel-mrt-0">
 									{this.state.fname != '' &&
 									this.state.lname != '' &&
 									this.state.phone != '' &&
 									this.state.email != '' ? (
-											<button class="about-view travel-btn">Submit</button>
-
+										<button class="about-view travel-btn">Submit</button>
 									) : (
 										<button
 											class="about-view travel-btn"

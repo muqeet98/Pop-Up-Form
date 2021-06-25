@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import Star from '../../../components/Star';
 import PopUp2 from '../../HomePage/PopUp2';
 
-const Index = ({width, handleLoginClick}) => {
+const Index = ({width, handleLoginClick, parentCallback, pref_length}) => {
 	const [ about, setAbout ] = useState('');
 	const [ preflength, setPreflength ] = useState('');
 	const [ lengthProvided, setLengthProvided ] = useState('');
@@ -29,7 +29,18 @@ const Index = ({width, handleLoginClick}) => {
 	const GetFootageLen = (lengthProvided, budget_other) => {
 		setLengthProvided(lengthProvided);
 		setLengthOther(budget_other);
+        // prov_length(lengthProvided);
 	};
+
+	const onValueChange=(e)=>{
+		parentCallback(about)
+		setAbout(e.target.value)
+	}
+
+	const onPrefLength=(event) => {
+		pref_length(preflength)
+		setPreflength(event.target.value)
+	}
 
 	return (
 		<div className="container">
@@ -45,9 +56,10 @@ const Index = ({width, handleLoginClick}) => {
 							<textarea
 								rows="4"
 								value={about}
-								onChange={(e) => setAbout(e.target.value) }
+								onChange={onValueChange}
 								class="form-control textarea"
 								placeholder=""
+								// onClick={()=>parentCallback(about)}
 							/>
 						</div>
 					</div>
@@ -63,7 +75,7 @@ const Index = ({width, handleLoginClick}) => {
 						<div className="col-lg-12 col-md-6 col-sm-12">
 							<input
 								value={preflength}
-								onChange={(e) => setPreflength(e.target.value)}
+								onChange={onPrefLength}
 								type="text"
 								name="preferlen"
 								className="form-control"
@@ -76,7 +88,7 @@ const Index = ({width, handleLoginClick}) => {
 				<div className="margin5">
 					<div className="container row">
 						<label className="headerfont">What is the length of the footage you will be providing?</label>
-						<Star />
+
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -88,7 +100,7 @@ const Index = ({width, handleLoginClick}) => {
 				<div className="margin5">
 					<div className="container row">
 						<label className="headerfont">What is your budget?</label>
-						<Star />
+
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -96,7 +108,7 @@ const Index = ({width, handleLoginClick}) => {
 					</div>
 					<div className="margin" />
 				</div>
-				{about != '' && preflength != '' && lengthProvided != '' && budget != '' ? (
+				{about != '' && preflength != '' ? (
 					<div className="margin5" style={{ textAlign: 'center', padding: 15 }}>
 						<button className="travel-button about-view" onClick={togglePopup}>
 							Next

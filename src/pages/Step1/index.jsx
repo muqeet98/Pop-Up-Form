@@ -13,11 +13,14 @@ class index extends Component {
 			selectedOption: '',
 			length: '',
 			other_input: '',
-			width: 0
+			width: 0,
+			aboutus: 'f',
+			pref_length:'n'
 		};
 		this.onValueChange = this.onValueChange.bind(this);
 		this.formSubmit = this.formSubmit.bind(this);
 		this.onTextChange = this.onTextChange.bind(this);
+		this.childCallback = this.childCallback.bind(this);
 	}
 
 	onTextChange(event) {
@@ -32,7 +35,7 @@ class index extends Component {
 		});
 
 		if (this.state.selectedOption == '') {
-			this.setState({ width: this.state.width + 5 });
+			this.setState({ width: this.state.width + 15 });
 		}
 	}
 
@@ -40,6 +43,20 @@ class index extends Component {
 		event.preventDefault();
 		console.log(this.state.selectedOption);
 	}
+
+	childCallback = (about) =>{
+        this.setState({aboutus: about})
+		if (this.state.aboutus == '') {
+			this.setState({ width: this.state.width + 15 });
+		}
+    }
+
+	pref_length = (pref_length) =>{
+        this.setState({pref_length: pref_length})
+		if (this.state.pref_length == '') {
+			this.setState({ width: this.state.width + 15 });
+		}
+    }
 
 	render() {
 		return (
@@ -222,21 +239,22 @@ class index extends Component {
 								</label>
 							</div>
 						</form>
-						{this.state.selectedOption == 'Wedding' ? <Wedding width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
-						{this.state.selectedOption == 'Holiday' ? <Wedding /> : null}
-						{this.state.selectedOption == 'Corporate' ? <Wedding /> : null}
+						<label>Text Helo ;{this.state.aboutus} Test: {this.state.pref_length}</label>
+						{this.state.selectedOption == 'Wedding' ? <Wedding parentCallback={this.childCallback} pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
+						{this.state.selectedOption == 'Holiday' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
+						{this.state.selectedOption == 'Corporate' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
 
-						{this.state.selectedOption == 'Gopro' ? <Wedding /> : null}
-						{this.state.selectedOption == 'Family' ? <Wedding /> : null}
-						{this.state.selectedOption == 'Drone' ? <Wedding /> : null}
+						{this.state.selectedOption == 'Gopro' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
+						{this.state.selectedOption == 'Family' ? <Wedding  parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/> : null}
+						{this.state.selectedOption == 'Drone' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/> : null}
 
-						{this.state.selectedOption == 'Commercial' ? <Wedding /> : null}
-						{this.state.selectedOption == 'Podcast' ? <Wedding /> : null}
-						{this.state.selectedOption == 'Animation' ? <Animation /> : null}
+						{this.state.selectedOption == 'Commercial' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/> : null}
+						{this.state.selectedOption == 'Podcast' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/> : null}
+						{this.state.selectedOption == 'Animation' ? <Animation parentCallback={this.childCallback} pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
 
-						{this.state.selectedOption == 'Voiceover' ? <Voiceover /> : null}
-						{this.state.selectedOption == 'Customjob' ? <Wedding /> : null}
-						{this.state.selectedOption == 'other' ? <Wedding /> : null}
+						{this.state.selectedOption == 'Voiceover' ? <Voiceover parentCallback={this.childCallback} pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
+						{this.state.selectedOption == 'Customjob' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/> : null}
+						{this.state.selectedOption == 'other' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/> : null}
 						{this.state.selectedOption == '' ? (
 							<div className="margin5" style={{ textAlign: 'center', padding: 15 }}>
 								<button

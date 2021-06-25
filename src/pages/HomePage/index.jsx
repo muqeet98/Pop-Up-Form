@@ -41,15 +41,14 @@ function Index() {
     <span onClick={handleLoginClick} className="loginicon">
           Sign In
         </span>
-  
 
 
  <PopUp handleClose={isShowLogin} handleLoginClick={handleLoginClick}/>
 {/* <LoginForm isShowLogin={isShowLogin} /> */}
-
+{/* 
     {isOpen && <PopUp
       handleClose={togglePopup}
-    />}
+    />} */}
   </div>
 }
 

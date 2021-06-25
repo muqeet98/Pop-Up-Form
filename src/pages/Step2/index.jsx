@@ -25,7 +25,7 @@ class index extends Component {
 			date: '',
 			other_option: ' ',
 			isOpen: false,
-			width: 33
+			width: 45
 		};
 		this.onValueChange = this.onValueChange.bind(this);
 		this.formSubmit = this.formSubmit.bind(this);
@@ -48,9 +48,9 @@ class index extends Component {
 
 	handleChange(event) {
 		this.setState({ value: event.target.value });
-		if(this.state.value==''){
-			this.setState({width: this.state.width+10})
-		}
+		// if(this.state.value==''){
+		// 	this.setState({width: this.state.width+15})
+		// }
 
 	}
 	handleDate(event) {
@@ -62,7 +62,7 @@ class index extends Component {
 			selectedOption: event.target.value
 		});
 		if(this.state.selectedOption==''){
-			this.setState({width: this.state.width+10})
+			this.setState({width: this.state.width+15})
 		}
 	}
 	formSubmit(event) {
@@ -209,7 +209,7 @@ class index extends Component {
 									</button>
 								</div>
 								<div class="about-btn travel-mrt-0">
-									{this.state.selectedOption != null ? (
+									{this.state.selectedOption !='' ? (
 										<div>
 											<button class="about-view travel-btn" onClick={ this.togglePopup }>Next</button>
 											{this.state.isOpen && <PopUp3 handleClose={this.togglePopup} width={this.state.width} handleLoginClick={this.props.handleLoginClick}/>}

@@ -4,7 +4,7 @@ import Foothagelength from '../../../components/Footagelength/index';
 import Budget from '../../../components/Budget/index';
 import Star from '../../../components/Star';
 import PopUp2 from '../../HomePage/PopUp2';
-const Index = () => {
+const Index = ({width, handleLoginClick, parentCallback, pref_length}) => {
 	const [ about, setAbout ] = useState('');
 	const [ preflength, setPreflength ] = useState('');
 	const [ lengthProvided, setLengthProvided ] = useState('');
@@ -27,6 +27,16 @@ const Index = () => {
 		setLengthOther(lengthOther);
 	};
 
+	const onValueChange=(e)=>{
+		parentCallback(about)
+		setAbout(e.target.value)
+	}
+
+	const onPrefLength=(event) => {
+		pref_length(preflength)
+		setPreflength(event.target.value)
+	}
+
 	return (
 		<div className="container">
 			<div>
@@ -41,7 +51,7 @@ const Index = () => {
 							<textarea
 								rows="4"
 								value={about}
-								onChange={(e) => setAbout(e.target.value)}
+								onChange={onValueChange}
 								class="form-control textarea"
 								placeholder=""
 							/>
@@ -59,7 +69,7 @@ const Index = () => {
 						<div className="col-lg-11 col-md-6 col-sm-12">
 							<input
 								value={preflength}
-								onChange={(e) => setPreflength(e.target.value)}
+								onChange={onPrefLength}
 								type="text"
 								name="preferlen"
 								className="form-control"
@@ -71,7 +81,7 @@ const Index = () => {
 				<div className="margin5">
 					<div className="row container">
 						<label className="headerfont">What is the lenght of the voiceover you will be providing?</label>
-						<Star />
+
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -82,7 +92,7 @@ const Index = () => {
 				<div className="margin5">
 					<div className="row container">
 						<label className="headerfont">What is your budget?</label>
-						<Star />
+
 					</div>
 					<div className="margin" />
 					<div className="">
@@ -90,10 +100,10 @@ const Index = () => {
 					</div>
 					<div className="margin" />
 				</div>
-				{about != '' && preflength != '' && lengthProvided != '' && budget != '' ? (
+				{about != '' && preflength != '' ? (
 					<div className="margin5" style={{ textAlign: 'center', padding: 15 }}>
 							<button className="travel-button about-view" onClick={togglePopup}>Next</button>
-							{isOpen && <PopUp2 handleClose={togglePopup} />}
+							{isOpen && <PopUp2 handleClose={togglePopup} handleLoginClick={handleLoginClick}/>}
 					</div>
 				) : (
 					<div className="margin5" style={{ textAlign: 'center', padding: 15 }}>
