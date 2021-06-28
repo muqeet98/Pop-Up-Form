@@ -43,7 +43,7 @@ const Index = ({width, handleLoginClick, parentCallback, pref_length}) => {
 	}
 
 	return (
-		<div className="container">
+		<div className="">
 			<div>
 				<div className="margin5">
 					<div className="container row">

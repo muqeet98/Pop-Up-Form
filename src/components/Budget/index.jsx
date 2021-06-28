@@ -85,10 +85,12 @@ class index extends Component {
 										checked={this.state.selectedOption === 'other'}
 										onChange={this.onValueChange}
 									/>
-								{"	"}	Other
+
 								</label>
                                 <div className="paddingleft10">
                                 <input
+								placeholder="Other"
+								className="form-control"
 								 	    type="text"
 										value={this.state.budget_other}
 										onChange={this.onBudgetChange}

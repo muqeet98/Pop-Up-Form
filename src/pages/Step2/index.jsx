@@ -23,7 +23,7 @@ class index extends Component {
 			selectedOption: '',
 			value: '',
 			date: '',
-			other_option: ' ',
+			other_option: '',
 			isOpen: false,
 			width: 45
 		};
@@ -153,7 +153,7 @@ class index extends Component {
 									{'	'}
 									<input
 										type="text"
-										placeholder="other"
+										placeholder="Other"
 										value={this.state.other_option}
 										onChange={this.handleOtherDate}
 									/>

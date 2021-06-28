@@ -239,7 +239,6 @@ class index extends Component {
 								</label>
 							</div>
 						</form>
-						<label>Text Helo ;{this.state.aboutus} Test: {this.state.pref_length}</label>
 						{this.state.selectedOption == 'Wedding' ? <Wedding parentCallback={this.childCallback} pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
 						{this.state.selectedOption == 'Holiday' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
 						{this.state.selectedOption == 'Corporate' ? <Wedding parentCallback={this.childCallback}  pref_length={this.pref_length} width={this.state.width} handleLoginClick={this.props.handleLoginClick} /> : null}
