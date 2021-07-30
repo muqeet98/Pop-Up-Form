@@ -1939,7 +1939,7 @@ td {
     border-radius: 15px;
     overflow: auto;
     box-shadow: rgba(0,0,0,.5);
-    /* -ms-overflow-style: none; */
+    -ms-overflow-style: none;
     scrollbar-width: none;
 
 
@@ -1962,8 +1962,9 @@ td {
     overflow:auto;
     box-shadow: 0 10px 20px rgba(14,15,18,.7);
     -ms-overflow-style: none;
-    overflow-x:none;
-    overflow-y: none;
+    scrollbar-width: none;
+    /* overflow-x:none;
+    overflow-y: none; */
     /* -ms-overflow-style: none; */
     top: calc(97.3vh - 92vh - 0px);
   }
