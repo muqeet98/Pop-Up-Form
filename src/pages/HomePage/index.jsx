@@ -1,15 +1,3 @@
-// import React, { Component } from 'react';
-// import Step1 from '../Step1/index';
-// import { useHistory, useLocation } from 'react-router-dom';
-// const Index = () => {
-// 	const history=useHistory()
-// 	return (
-// 		<div>
-// 			<button className="travel-button about-view" onClick={()=> history.push({pathname: '/step1'})}> SignUp</button>
-// 		</div>
-// 	);
-// };
-// export default Index;
 
 import "./styles.css";
 import React, { useState } from 'react';
@@ -21,29 +9,37 @@ function Index() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isShowLogin, setIsShowLogin] = useState(true);
+  const [bg,setBg] =useState("#fff");
 
   const handleLoginClick = () => {
     setIsShowLogin((isShowLogin) => !isShowLogin);
+    if(isShowLogin== true){
+    setBg("rgba(0,0,0,0.3")
+    }
+    else{
+      setBg("#fff")
+    }
   };
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
 
-  return <div>
+  return <div style={{backgroundColor: bg, position:'inherit'}}>
     {/* <input
       type="button"
       value="Click to Open Popup"
       onClick={togglePopup}
     /> */}
 
-
+<div style={{position:'fixed',}}>
     <span onClick={handleLoginClick} className="loginicon">
           Sign In
         </span>
-
+</div>
 
  <PopUp handleClose={isShowLogin} handleLoginClick={handleLoginClick}/>
+
 {/* <LoginForm isShowLogin={isShowLogin} /> */}
 {/*
     {isOpen && <PopUp

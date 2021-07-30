@@ -31,7 +31,7 @@ class index extends Component {
 	}
 	render() {
 		return (
-			<form className="paddingleft30" onSubmit={this.formSubmit}>
+			<form className="" onSubmit={this.formSubmit}>
 				<div className="radio col-log-6">
 					<label>
 						<input

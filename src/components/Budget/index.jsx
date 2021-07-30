@@ -30,7 +30,7 @@ class index extends Component {
 	}
 	render() {
 		return (
-						<form className="paddingleft30" onSubmit={this.formSubmit}>
+						<form className="" onSubmit={this.formSubmit}>
 							<div className="radio col-log-6">
 								<label>
 									<input
@@ -52,7 +52,7 @@ class index extends Component {
 										checked={this.state.selectedOption === 'upto100'}
 										onChange={this.onValueChange}
 									/>
-								 {"	"}   $ 50 - $ 100
+								 {"	"}  $ 50 - $ 100
 								</label>
 							</div>
 							<div className="radio col-log-6">

@@ -87,7 +87,7 @@ class index extends Component {
 					<div className="margin" />
 					<div className="container">
 						<form style={{ justifyContent: 'space-evenly' }} className="row " onSubmit={this.formSubmit}>
-							<div className="radio col-lg-4">
+							<div className="radio col-lg-4 ">
 								<label>
 									<input
 										type="radio"

@@ -53,7 +53,7 @@ const Index = ({width, handleLoginClick, parentCallback, pref_length}) => {
 					</div>
 					<div className="margin" />
 					<div className="">
-						<div class="col-lg-11 col-md-12 col-sm-12">
+						<div class="col-lg-11 col-md-12 col-sm-12 left-right-padding">
 							<textarea
 								rows="4"
 								value={about}
@@ -72,7 +72,7 @@ const Index = ({width, handleLoginClick, parentCallback, pref_length}) => {
 					</div>
 					<div className="margin" />
 					<div className="">
-						<div className="col-lg-11 col-md-6 col-sm-12">
+						<div className="col-lg-11 col-md-6 col-sm-12 left-right-padding">
 							<input
 								value={preflength}
 								onChange={onPrefLength}

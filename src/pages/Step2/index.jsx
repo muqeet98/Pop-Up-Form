@@ -97,7 +97,7 @@ class index extends Component {
 					<div className="margin" />
 					<div className="container">
 						<form style={{ textAlign: 'left' }} onSubmit={this.formSubmit}>
-							<div className="radio col-lg-4">
+							<div className="radio col-lg-4 left-right-padding">
 								<label>
 									<input
 										type="radio"
@@ -109,7 +109,7 @@ class index extends Component {
 								</label>
 							</div>
 
-							<div className="radio col-lg-4">
+							<div className="radio col-lg-4 left-right-padding">
 								<label>
 									<input
 										type="radio"
@@ -120,7 +120,7 @@ class index extends Component {
 									{'	'}In the next few days
 								</label>
 							</div>
-							<div className="radio col-lg-4">
+							<div className="radio col-lg-4 left-right-padding">
 								<label>
 									<input
 										type="radio"
@@ -131,7 +131,7 @@ class index extends Component {
 									{'	'}As soon as possible
 								</label>
 							</div>
-							<div className="radio col-lg-4">
+							<div className="radio col-lg-4 left-right-padding">
 								<label>
 									<input
 										type="radio"
@@ -142,7 +142,7 @@ class index extends Component {
 									{'	'}On one particular date
 								</label>
 							</div>
-							<div className="radio col-lg-4">
+							<div className="radio col-lg-4 left-right-padding">
 								<label>
 									<input
 										type="radio"
@@ -168,7 +168,7 @@ class index extends Component {
 								</div>
 								<div className="margin" />
 								<div className="">
-									<div className="col-lg-10 col-md-6 col-sm-12">
+									<div className="col-lg-12 col-md-6 col-sm-12 left-right-padding">
 										<input
 											type="date"
 											name="preferlen"
@@ -187,7 +187,7 @@ class index extends Component {
 							</div>
 							<div className="margin" />
 							<div className="">
-								<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="col-lg-12 col-md-12 col-sm-12 left-right-padding">
 									<textarea
 										rows="3"
 										name="about"
