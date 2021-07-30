@@ -1970,6 +1970,9 @@ td {
   .box2::-webkit-scrollbar {
     display: none;
 }
+  .box::-webkit-scrollbar {
+    display: none;
+}
 
   .close-icon {
     content: 'x';
